@@ -1,0 +1,197 @@
+/* 🌈 Full page gradient background */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #667eea, #764ba2, #ff758c);
+    background-size: 300% 300%;
+    animation: gradientMove 8s ease infinite;
+}
+
+/* 🌊 Animated gradient */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 🧊 Game container (glass effect) */
+.game-container {
+    /* backdrop-filter: blur(15px); */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+}
+
+/* 🎯 Title */
+h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+/* 👤 Player text */
+h2 {
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+/* 🧩 Board */
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 10px;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+/* 🔲 Square styling */
+.square {
+    height: 80px;
+    width: 80px;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    /* backdrop-filter: blur(5px); */
+
+    transition: all 0.2s ease;
+}
+
+/* ✨ Hover effect */
+.square:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* 🏆 Winning cells */
+.square.win {
+    background: linear-gradient(135deg, #00f260, #0575e6);
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 255, 150, 0.8);
+}
+
+/* 🔥 Winning line */
+.line {
+    position: absolute;
+    height: 5px;
+    width: 235px;
+    background: linear-gradient(90deg, #00f260, #0575e6);
+    border-radius: 5px;
+
+    animation: drawLine 0.3s ease forwards;
+    transform-origin: center;
+}
+
+@keyframes drawLine {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Horizontal */
+.line-012 {
+    top: 46px;
+    left: 3px;
+}
+
+.line-345 {
+    top: 137px;
+    left: 3px;
+}
+
+.line-678 {
+    top: 227px;
+    left: 3px;
+}
+
+/* Vertical */
+.line-036 {
+  top: 53%;
+  left: -33.5%;
+  transform: rotate(90deg);
+  transform-origin: center;
+  animation: drawVertical 0.3s ease forwards;
+}
+
+.line-147 {
+  top: 53%;
+  left: 1%;
+  transform: rotate(90deg);
+  transform-origin: center;
+  animation: drawVertical 0.3s ease forwards;
+}
+
+.line-258 {
+  top: 53%;
+  left: 35.5%;
+  transform: rotate(90deg);
+  transform-origin: center;
+  animation: drawVertical 0.3s ease forwards;
+}
+
+/* Diagonal */
+
+
+.line-048 {
+    width: 280px;
+    top: 54%;
+    left: 47%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transform-origin: center;
+    animation: drawDiagonal45 0.3s ease forwards;
+}
+
+.line-246 {
+    width: 280px;
+    top: 54%;
+    left: 46%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transform-origin: center;
+    animation: drawDiagonal135 0.3s ease forwards;
+}
+
+/* 🔄 Restart button */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 120, 150, 0.8);
+}
